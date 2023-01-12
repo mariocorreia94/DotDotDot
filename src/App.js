@@ -24,7 +24,11 @@ function App() {
     setRemovedPositions([...removedPositions, popped]);
   }
 
-  function handleRedoClick() {}
+  function handleRedoClick() {
+    if (true) {
+      return;
+    }
+  }
 
   return (
     <>
