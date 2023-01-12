@@ -8,12 +8,12 @@ function App() {
   function onClickPage(e) {
     setClickedPositions([
       ...clickedPositions,
-      { posX: e.pageX, posY: e.pageY },
+      { posX: e.pageX - 3, posY: e.pageY - 2 },
     ]);
   }
 
   function handleUndoClick() {
-    if (clickedPositions.length == 0) {
+    if (clickedPositions.length === 0) {
       return;
     }
 
@@ -25,15 +25,32 @@ function App() {
   }
 
   function handleRedoClick() {
-    if (true) {
+    if (removedPositions.length === 0) {
       return;
     }
+    const newRemovedPositions = [...removedPositions];
+    const redoPosition = newRemovedPositions.pop();
+
+    setRemovedPositions(newRemovedPositions);
+    setClickedPositions([...clickedPositions, redoPosition]);
   }
 
   return (
     <>
-      <button onClick={handleUndoClick}>Undo</button>
-      <button onClick={handleRedoClick}>Redo</button>
+      <div className="actions">
+        <button
+          disabled={clickedPositions.length === 0}
+          onClick={handleUndoClick}
+        >
+          Undo
+        </button>
+        <button
+          disabled={removedPositions.length === 0}
+          onClick={handleRedoClick}
+        >
+          Redo
+        </button>
+      </div>
       <div className="App" onClick={onClickPage}>
         {clickedPositions.map((clickedPosition, idx) => (
           <div

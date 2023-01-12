@@ -1,5 +1,5 @@
 .App {
-  height: 100vh;
+  height: 90vh;
 }
 
 .circle {
@@ -8,4 +8,20 @@
   background-color: red;
   border-radius: 50%;
   position: absolute;
+}
+
+
+button {
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: none;
+}
+
+button + button {
+  margin-left: 10px;
+}
+
+.actions {
+  margin-top: 20px;
 }
